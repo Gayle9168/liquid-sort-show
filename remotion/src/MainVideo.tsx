@@ -38,7 +38,7 @@ export const MainVideo: React.FC = () => {
   const originX = (width - stageWidth) / 2;
   const slotW = stageWidth / N;
   const barW = slotW - 22;
-  const originY = 1080; // baseline y (bars grow upward)
+  const originY = 1160; // baseline y in canvas coords (bars grow upward from here)
 
   // Determine step
   const inSort = frame >= SORT_START && frame < SORT_END;
@@ -124,18 +124,17 @@ export const MainVideo: React.FC = () => {
         </GlassPanel>
       </div>
 
-      {/* Bars stage (persistent) */}
-      <div style={{ position: "absolute", top: 340, left: 0, width, height: 780 }}>
+      {/* Bars stage (persistent, absolute in canvas coords) */}
+      <div style={{ position: "absolute", top: 0, left: 0, width, height }}>
         {/* soft ground shadow */}
         <div style={{
           position: "absolute",
           left: originX,
-          top: originY - 300,
+          top: originY - 10,
           width: stageWidth,
-          height: 40,
-          background: "radial-gradient(ellipse at center, rgba(80,90,140,0.18), rgba(80,90,140,0) 70%)",
-          filter: "blur(6px)",
-          top: originY - 20,
+          height: 30,
+          background: "radial-gradient(ellipse at center, rgba(80,90,140,0.22), rgba(80,90,140,0) 70%)",
+          filter: "blur(8px)",
         }} />
 
         {introBars ? (
@@ -170,7 +169,7 @@ export const MainVideo: React.FC = () => {
           top: originY,
           width: stageWidth,
           height: 2,
-          background: "linear-gradient(90deg, rgba(120,130,180,0) 0%, rgba(120,130,180,0.35) 50%, rgba(120,130,180,0) 100%)",
+          background: "linear-gradient(90deg, rgba(120,130,180,0) 0%, rgba(120,130,180,0.4) 50%, rgba(120,130,180,0) 100%)",
         }} />
       </div>
 
@@ -179,9 +178,9 @@ export const MainVideo: React.FC = () => {
         step={displayStep}
         progress={displayProgress}
         x={60}
-        y={1210}
+        y={1230}
         width={width - 120}
-        height={620}
+        height={640}
       />
 
       {/* Outro overlay */}
