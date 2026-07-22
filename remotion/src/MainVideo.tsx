@@ -6,6 +6,9 @@ import { LiquidBackground } from "./components/LiquidBackground";
 import { GlassPanel } from "./components/GlassPanel";
 import { BarsStage } from "./components/BarsStage";
 import { CodePanel } from "./components/CodePanel";
+import { StepLabel } from "./components/StepLabel";
+import { VfxLayer } from "./components/VfxLayer";
+import { SfxTrack } from "./components/SfxTrack";
 import { buildSteps } from "./lib/sort";
 import { buildStepClock, locateStep } from "./lib/timing";
 import { theme } from "./lib/theme";
@@ -25,7 +28,7 @@ const SORT_END = OUTRO_START;
 
 export const MainVideo: React.FC = () => {
   const frame = useCurrentFrame();
-  const { width, height, fps } = useVideoConfig();
+  const { width, height, fps, durationInFrames } = useVideoConfig();
 
   const steps = React.useMemo(() => buildSteps(INITIAL), []);
   const clock = React.useMemo(
@@ -74,9 +77,26 @@ export const MainVideo: React.FC = () => {
   const displayPrev = inSort ? prev : displayStep;
   const displayProgress = inSort ? local : 1;
 
+  // Final flash active during ~15f around the last insert step
+  const lastInsertIdx = React.useMemo(() => {
+    for (let i = steps.length - 1; i >= 0; i--) if (steps[i].kind === "insert") return i;
+    return -1;
+  }, [steps]);
+  const lastInsertFrame = lastInsertIdx >= 0 ? SORT_START + clock.starts[lastInsertIdx] : OUTRO_START;
+  const finalFlashActive = frame >= lastInsertFrame && frame <= lastInsertFrame + 24;
+
   return (
     <AbsoluteFill style={{ fontFamily: "Inter, sans-serif" }}>
       <LiquidBackground />
+
+      <SfxTrack
+        steps={steps}
+        starts={clock.starts}
+        sortStartFrame={SORT_START}
+        introFrame={0}
+        outroFrame={OUTRO_START}
+        totalFrames={durationInFrames}
+      />
 
       {/* Top title bar */}
       <div
@@ -171,7 +191,32 @@ export const MainVideo: React.FC = () => {
           height: 2,
           background: "linear-gradient(90deg, rgba(120,130,180,0) 0%, rgba(120,130,180,0.4) 50%, rgba(120,130,180,0) 100%)",
         }} />
+
+        {inSort && (
+          <VfxLayer
+            step={displayStep}
+            progress={displayProgress}
+            n={N}
+            originX={originX}
+            originY={originY}
+            slotW={slotW}
+            maxValue={MAX}
+            finalFlashActive={finalFlashActive}
+          />
+        )}
       </div>
+
+      {/* Step label pill (above the bars) */}
+      {inSort && (
+        <StepLabel
+          step={displayStep}
+          stepIndex={idx}
+          progress={displayProgress}
+          x={60}
+          y={340}
+          width={width - 120}
+        />
+      )}
 
       {/* Code panel */}
       <CodePanel

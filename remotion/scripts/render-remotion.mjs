@@ -30,7 +30,8 @@ await renderMedia({
   codec: "h264",
   outputLocation: "/mnt/documents/insertion-sort-liquid-glass.mp4",
   puppeteerInstance: browser,
-  muted: true,
+  muted: false,
+  audioCodec: "aac",
   concurrency: 1,
 });
 
