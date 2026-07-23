@@ -252,9 +252,9 @@ export const MainVideoQuick: React.FC = () => {
         step={displayStep}
         progress={displayProgress}
         x={60}
-        y={1230}
+        y={1240}
         width={width - 120}
-        height={640}
+        height={660}
       />
 
       {frame >= OUTRO_START - 6 && (

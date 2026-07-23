@@ -36,8 +36,8 @@ export const CodePanelQuick: React.FC<{
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const lineHeight = 32;
-  const paddingTop = 46;
+  const lineHeight = 28;
+  const paddingTop = 30;
   const paddingLeft = 40;
 
   const highlightY = paddingTop + step.codeLine * lineHeight - 4;
@@ -101,10 +101,10 @@ export const CodePanelQuick: React.FC<{
           <div
             style={{
               position: "absolute",
-              top: paddingTop + 44,
+              top: paddingTop + 40,
               left: paddingLeft,
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: 22,
+              fontSize: 20,
               lineHeight: `${lineHeight}px`,
               color: theme.ink,
               whiteSpace: "pre",
