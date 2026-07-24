@@ -37,8 +37,8 @@ export const CodePanelMerge: React.FC<{
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const lineHeight = 28;
-  const paddingTop = 30;
+  const lineHeight = 21;
+  const paddingTop = 24;
   const paddingLeft = 40;
 
   const highlightY = paddingTop + step.codeLine * lineHeight - 4;
@@ -105,7 +105,7 @@ export const CodePanelMerge: React.FC<{
               top: paddingTop + 40,
               left: paddingLeft,
               fontFamily: "'JetBrains Mono', monospace",
-              fontSize: 20,
+              fontSize: 17,
               lineHeight: `${lineHeight}px`,
               color: theme.ink,
               whiteSpace: "pre",
