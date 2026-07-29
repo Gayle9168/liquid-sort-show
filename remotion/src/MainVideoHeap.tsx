@@ -125,6 +125,8 @@ export const MainVideoHeap: React.FC = () => {
           levelH={treeLevelH}
           spanX={treeSpanX}
           radius={nodeRadius}
+          width={width}
+          height={height}
         />
 
         {/* array rail */}

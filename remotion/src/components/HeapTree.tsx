@@ -24,7 +24,9 @@ export const HeapTree: React.FC<{
   levelH: number;
   spanX: number;
   radius: number;
-}> = ({ step, progress, n, centerX, topY, levelH, spanX, radius }) => {
+  width: number;
+  height: number;
+}> = ({ step, progress, n, centerX, topY, levelH, spanX, radius, width, height }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -43,7 +45,12 @@ export const HeapTree: React.FC<{
   const edgeKey = step.edgeActive ? `${step.edgeActive[0]}-${step.edgeActive[1]}` : "";
 
   return (
-    <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none" }}>
+    <svg
+      width={width}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
+      style={{ position: "absolute", left: 0, top: 0, pointerEvents: "none" }}
+    >
       <defs>
         <linearGradient id="edgeGrad" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#A78BFA" stopOpacity="0.55" />
