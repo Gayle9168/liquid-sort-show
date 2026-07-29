@@ -3,6 +3,7 @@ import { MainVideo } from "./MainVideo";
 import { MainVideoQuick } from "./MainVideoQuick";
 import { MainVideoMerge } from "./MainVideoMerge";
 import { MainVideoSelection } from "./MainVideoSelection";
+import { MainVideoHeap } from "./MainVideoHeap";
 
 export const RemotionRoot: React.FC = () => (
   <>
@@ -33,6 +34,14 @@ export const RemotionRoot: React.FC = () => (
     <Composition
       id="selection"
       component={MainVideoSelection}
+      durationInFrames={1200}
+      fps={30}
+      width={1080}
+      height={1920}
+    />
+    <Composition
+      id="heap"
+      component={MainVideoHeap}
       durationInFrames={1200}
       fps={30}
       width={1080}
