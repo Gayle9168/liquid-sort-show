@@ -74,7 +74,7 @@ StepKind =
 - `CodePanelTwoSum.tsx` — existing code-panel styling; `step.codeLine` drives the spring highlight; chips show `i`, `nums[i]`, `need`, `map.size`.
 - `ComplexityPanel.tsx` — bottom glass strip: `Time O(n)` / `Space O(n)` with a small bar comparison against brute force `O(n^2)`; animates in during the outro.
 - `StepLabelTwoSum.tsx` — glass pill: `Visit`, `Need complement`, `Not in map`, `Store in map`, `Match found!`, `Answer`.
-- `VfxLayerTwoSum.tsx` — arc from array cell down into the hash map on `store`; peach search ripple across the map on `lookup`; mint radial bloom + connector beam on `found`; final sweep across the answer pair. Additive, frame-driven, no `backdropFilter`.
+- `VfxLayerTwoSum.tsx` — flight trail behind the cell dropping into its slot on `store`; peach scan sweep across slots on `lookup`; mint radial bloom + connector beam between slot and cell on `found`; final sweep across the answer pair. Additive, frame-driven, no `backdropFilter`.
 - `SfxTrackTwoSum.tsx` — reuses existing `public/sfx/*`: `pick` (visit), `compare` (lookup), `shift` (store), `insert` (found), `lock` (result), plus `ambient`, `whoosh_intro`, `sparkle_outro`.
 
 Code listing shown in the panel:
@@ -111,5 +111,5 @@ Stills at frames 60, 300, 700, 1040, 1160; short audio test render; then the ful
 
 ## Files touched
 
-New: `src/lib/two-sum.ts`, `src/MainVideoTwoSum.tsx`, `src/components/{FlatBackground,ArrayRowTwoSum,HashMapPanel,ComplementChip,CodePanelTwoSum,ComplexityPanel,StepLabelTwoSum,VfxLayerTwoSum,SfxTrackTwoSum}.tsx`, `scripts/render-twosum.mjs`, `scripts/still-twosum.mjs`.
+New: `src/lib/two-sum.ts`, `src/MainVideoTwoSum.tsx`, `src/components/{FlatBackground,ArrayRowTwoSum,HashMapContainer,ComplementChip,CodePanelTwoSum,ComplexityPanel,StepLabelTwoSum,VfxLayerTwoSum,SfxTrackTwoSum}.tsx`, `scripts/render-twosum.mjs`, `scripts/still-twosum.mjs`.
 Updated: `src/Root.tsx`. Unchanged: timing, theme, GlassPanel, existing sort shorts.
