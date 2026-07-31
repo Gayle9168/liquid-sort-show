@@ -25,8 +25,13 @@ A 40-second 9:16 short explaining **Two Sum (hash map, optimal)** in the same Li
  ├──────────────────────────────┤
  │ need = target - nums[i]      │  complement chip
  ├──────────────────────────────┤
- │ HASH MAP (glass table)       │
- │  value -> index, one per step│
+ │ HASH MAP  (teaching box)     │
+ │ ┌────────┐ ┌────────┐        │
+ │ │key  4  │ │key  1  │  ...   │
+ │ │val  0  │ │val  1  │        │
+ │ └────────┘ └────────┘        │
+ │  6 empty slots, fill one     │
+ │  per step, left to right     │
  ├──────────────────────────────┤
  │ code panel, synced highlight │
  ├──────────────────────────────┤
@@ -58,12 +63,18 @@ StepKind =
 
 - `FlatBackground.tsx` — solid `#EFF3F8` fill (replaces `LiquidBackground` here).
 - `ArrayRowTwoSum.tsx` — 6 glass cells with value + index; current `i` lifts and tints sky; matched pair springs to mint with a lock sheen.
-- `HashMapPanel.tsx` — glass table; each `store` springs a new `value -> index` row in from the right in lilac; on `found` the matching row pulses mint with a connector to the current cell.
+- `HashMapContainer.tsx` — the teaching centerpiece, not a plain table. A labelled glass container ("HASH MAP  key -> index") holding 6 empty dashed slots from the start, so students see the map as a real box that fills up:
+  - Each slot is a mini glass card with a `key` row (the value) and an `index` row underneath, plus a small `#0..#5` slot number.
+  - Empty slots are dashed outlines at low opacity, so the growth of the map is obvious at a glance.
+  - On `store`, the current array cell visually **drops into** the next slot: the cell clones, arcs down along a bezier into the slot, the slot flips from dashed to filled lilac glass with a spring overshoot, and a tiny "+1" and `map.size` counter tick up.
+  - On `lookup`, a peach scan highlight sweeps slot by slot while the label reads "Is 5 in the map?" — the miss ends with a soft grey dim on all slots.
+  - On `found`, the matching slot pops to mint, a beam connects that slot up to its array cell, and both the slot and the current cell are ringed — showing exactly where the answer pair came from.
+  - A one-line caption under the container narrates the moment ("stored 4 at index 0", "5 not in map yet", "found 6 -> index 3"), keeping the walkthrough explicit for beginners.
 - `ComplementChip.tsx` — animated `need = 11 - 6 = 5` chip with digits counting into place.
 - `CodePanelTwoSum.tsx` — existing code-panel styling; `step.codeLine` drives the spring highlight; chips show `i`, `nums[i]`, `need`, `map.size`.
 - `ComplexityPanel.tsx` — bottom glass strip: `Time O(n)` / `Space O(n)` with a small bar comparison against brute force `O(n^2)`; animates in during the outro.
 - `StepLabelTwoSum.tsx` — glass pill: `Visit`, `Need complement`, `Not in map`, `Store in map`, `Match found!`, `Answer`.
-- `VfxLayerTwoSum.tsx` — arc from array cell down into the hash map on `store`; peach search ripple across the map on `lookup`; mint radial bloom + connector beam on `found`; final sweep across the answer pair. Additive, frame-driven, no `backdropFilter`.
+- `VfxLayerTwoSum.tsx` — flight trail behind the cell dropping into its slot on `store`; peach scan sweep across slots on `lookup`; mint radial bloom + connector beam between slot and cell on `found`; final sweep across the answer pair. Additive, frame-driven, no `backdropFilter`.
 - `SfxTrackTwoSum.tsx` — reuses existing `public/sfx/*`: `pick` (visit), `compare` (lookup), `shift` (store), `insert` (found), `lock` (result), plus `ambient`, `whoosh_intro`, `sparkle_outro`.
 
 Code listing shown in the panel:
@@ -90,7 +101,7 @@ function twoSum(nums, target) {
 
 ## Wiring
 
-- `MainVideoTwoSum.tsx` composes background, title, array row, complement chip, hash map, code panel, complexity, label, VFX and SFX, all driven by one `curr/prev/local` from `locateStep`.
+- `MainVideoTwoSum.tsx` composes background, title, array row, complement chip, hash map container, code panel, complexity, label, VFX and SFX, all driven by one `curr/prev/local` from `locateStep`. The hash map container is the largest element on screen after the array row — it is what the short is teaching.
 - Register `<Composition id="twosum" ... 1200 / 30 / 1080 / 1920 />` in `remotion/src/Root.tsx`.
 - `remotion/scripts/render-twosum.mjs` + `still-twosum.mjs` cloned from the heap versions, output `/mnt/documents/two-sum-liquid-glass.mp4`.
 
@@ -100,5 +111,5 @@ Stills at frames 60, 300, 700, 1040, 1160; short audio test render; then the ful
 
 ## Files touched
 
-New: `src/lib/two-sum.ts`, `src/MainVideoTwoSum.tsx`, `src/components/{FlatBackground,ArrayRowTwoSum,HashMapPanel,ComplementChip,CodePanelTwoSum,ComplexityPanel,StepLabelTwoSum,VfxLayerTwoSum,SfxTrackTwoSum}.tsx`, `scripts/render-twosum.mjs`, `scripts/still-twosum.mjs`.
+New: `src/lib/two-sum.ts`, `src/MainVideoTwoSum.tsx`, `src/components/{FlatBackground,ArrayRowTwoSum,HashMapContainer,ComplementChip,CodePanelTwoSum,ComplexityPanel,StepLabelTwoSum,VfxLayerTwoSum,SfxTrackTwoSum}.tsx`, `scripts/render-twosum.mjs`, `scripts/still-twosum.mjs`.
 Updated: `src/Root.tsx`. Unchanged: timing, theme, GlassPanel, existing sort shorts.
