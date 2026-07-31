@@ -101,7 +101,7 @@ function twoSum(nums, target) {
 
 ## Wiring
 
-- `MainVideoTwoSum.tsx` composes background, title, array row, complement chip, hash map, code panel, complexity, label, VFX and SFX, all driven by one `curr/prev/local` from `locateStep`.
+- `MainVideoTwoSum.tsx` composes background, title, array row, complement chip, hash map container, code panel, complexity, label, VFX and SFX, all driven by one `curr/prev/local` from `locateStep`. The hash map container is the largest element on screen after the array row — it is what the short is teaching.
 - Register `<Composition id="twosum" ... 1200 / 30 / 1080 / 1920 />` in `remotion/src/Root.tsx`.
 - `remotion/scripts/render-twosum.mjs` + `still-twosum.mjs` cloned from the heap versions, output `/mnt/documents/two-sum-liquid-glass.mp4`.
 
