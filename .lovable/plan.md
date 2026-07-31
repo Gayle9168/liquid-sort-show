@@ -25,8 +25,13 @@ A 40-second 9:16 short explaining **Two Sum (hash map, optimal)** in the same Li
  ├──────────────────────────────┤
  │ need = target - nums[i]      │  complement chip
  ├──────────────────────────────┤
- │ HASH MAP (glass table)       │
- │  value -> index, one per step│
+ │ HASH MAP  (teaching box)     │
+ │ ┌────────┐ ┌────────┐        │
+ │ │key  4  │ │key  1  │  ...   │
+ │ │val  0  │ │val  1  │        │
+ │ └────────┘ └────────┘        │
+ │  6 empty slots, fill one     │
+ │  per step, left to right     │
  ├──────────────────────────────┤
  │ code panel, synced highlight │
  ├──────────────────────────────┤
