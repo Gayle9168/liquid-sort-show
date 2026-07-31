@@ -63,7 +63,13 @@ StepKind =
 
 - `FlatBackground.tsx` — solid `#EFF3F8` fill (replaces `LiquidBackground` here).
 - `ArrayRowTwoSum.tsx` — 6 glass cells with value + index; current `i` lifts and tints sky; matched pair springs to mint with a lock sheen.
-- `HashMapPanel.tsx` — glass table; each `store` springs a new `value -> index` row in from the right in lilac; on `found` the matching row pulses mint with a connector to the current cell.
+- `HashMapContainer.tsx` — the teaching centerpiece, not a plain table. A labelled glass container ("HASH MAP  key -> index") holding 6 empty dashed slots from the start, so students see the map as a real box that fills up:
+  - Each slot is a mini glass card with a `key` row (the value) and an `index` row underneath, plus a small `#0..#5` slot number.
+  - Empty slots are dashed outlines at low opacity, so the growth of the map is obvious at a glance.
+  - On `store`, the current array cell visually **drops into** the next slot: the cell clones, arcs down along a bezier into the slot, the slot flips from dashed to filled lilac glass with a spring overshoot, and a tiny "+1" and `map.size` counter tick up.
+  - On `lookup`, a peach scan highlight sweeps slot by slot while the label reads "Is 5 in the map?" — the miss ends with a soft grey dim on all slots.
+  - On `found`, the matching slot pops to mint, a beam connects that slot up to its array cell, and both the slot and the current cell are ringed — showing exactly where the answer pair came from.
+  - A one-line caption under the container narrates the moment ("stored 4 at index 0", "5 not in map yet", "found 6 -> index 3"), keeping the walkthrough explicit for beginners.
 - `ComplementChip.tsx` — animated `need = 11 - 6 = 5` chip with digits counting into place.
 - `CodePanelTwoSum.tsx` — existing code-panel styling; `step.codeLine` drives the spring highlight; chips show `i`, `nums[i]`, `need`, `map.size`.
 - `ComplexityPanel.tsx` — bottom glass strip: `Time O(n)` / `Space O(n)` with a small bar comparison against brute force `O(n^2)`; animates in during the outro.
