@@ -26,8 +26,8 @@ export const CodePanelTwoSum: React.FC<{
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const lineHeight = 42;
-  const codeTop = 88;
+  const lineHeight = 39;
+  const codeTop = 78;
   const paddingLeft = 40;
 
   const highlightW = interpolate(

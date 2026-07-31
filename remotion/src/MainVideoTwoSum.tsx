@@ -29,7 +29,7 @@ const CELL_W = (960 - GAP * 5) / 6;
 const CELL_H = 150;
 
 const MAP_X = (1080 - MAP_W) / 2;
-const MAP_Y = 700;
+const MAP_Y = 690;
 
 export const MainVideoTwoSum: React.FC = () => {
   const frame = useCurrentFrame();
@@ -200,9 +200,9 @@ export const MainVideoTwoSum: React.FC = () => {
 
       <VfxLayerTwoSum step={step} progress={progress} cellCenter={cellCenter} slotPos={slotPos} />
 
-      <CodePanelTwoSum step={step} progress={progress} x={60} y={MAP_Y + MAP_H + 34} width={width - 120} height={470} />
+      <CodePanelTwoSum step={step} progress={progress} x={60} y={MAP_Y + MAP_H + 26} width={width - 120} height={505} />
 
-      <ComplexityPanel x={60} y={MAP_Y + MAP_H + 34 + 470 + 24} width={width - 120} height={158} appearFrame={44} />
+      <ComplexityPanel x={60} y={MAP_Y + MAP_H + 26 + 505 + 20} width={width - 120} height={150} appearFrame={44} />
     </AbsoluteFill>
   );
 };
