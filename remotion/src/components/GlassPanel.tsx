@@ -39,7 +39,7 @@ export const GlassPanel: React.FC<{
           pointerEvents: "none",
         }}
       />
-      <div style={{ position: "relative" }}>{children}</div>
+      <div style={{ position: "relative", width: "100%", height: "100%" }}>{children}</div>
     </div>
   );
 };
