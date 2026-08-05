@@ -225,7 +225,7 @@ export const MainVideoMoveZeroes: React.FC = () => {
       {/* outro: complexity graph */}
       {frame >= OUTRO_START - 10 && (
         <>
-          <ComplexityGraphMz x={60} y={520} appearFrame={OUTRO_START} />
+          <ComplexityGraphMz x={60} y={470} appearFrame={OUTRO_START} />
           <div
             style={{
               position: "absolute",
@@ -259,7 +259,7 @@ export const MainVideoMoveZeroes: React.FC = () => {
             style={{
               position: "absolute",
               left: 60,
-              top: 1330,
+              top: 1400,
               width: width - 120,
               textAlign: "center",
               fontFamily: "'JetBrains Mono', monospace",
