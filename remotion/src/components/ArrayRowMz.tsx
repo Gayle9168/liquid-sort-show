@@ -34,6 +34,16 @@ export const ArrayRowMz: React.FC<{
 
   const slotX = (i: number) => i * (cellW + gap);
 
+  // While the swap is in flight, colour by post-swap ownership: the moving
+  // non-zero cell is already "packed", the zero it trades with is not.
+  const packedSet =
+    swapping && step.swap
+      ? new Set<number>([
+          ...Array.from({ length: Math.max(0, step.write - 1) }, (_, k) => k),
+          step.swap[0],
+        ])
+      : new Set<number>(step.packed);
+
   return (
     <div style={{ position: "absolute", left: x, top: y }}>
       {cells.map((v, i) => {
@@ -58,7 +68,7 @@ export const ArrayRowMz: React.FC<{
 
         const isZero = v === 0;
         const isActive = step.active.includes(i) && !intro;
-        const isPacked = step.packed.includes(i);
+        const isPacked = packedSet.has(i);
         const isRead = i === step.read;
 
         if (isRead && !swapping) lift = interpolate(pop, [0, 1], [0, -18]);
