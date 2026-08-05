@@ -5,6 +5,7 @@ import { MainVideoMerge } from "./MainVideoMerge";
 import { MainVideoSelection } from "./MainVideoSelection";
 import { MainVideoHeap } from "./MainVideoHeap";
 import { MainVideoTwoSum } from "./MainVideoTwoSum";
+import { MainVideoMoveZeroes } from "./MainVideoMoveZeroes";
 
 export const RemotionRoot: React.FC = () => (
   <>
@@ -52,6 +53,14 @@ export const RemotionRoot: React.FC = () => (
       id="twosum"
       component={MainVideoTwoSum}
       durationInFrames={1200}
+      fps={30}
+      width={1080}
+      height={1920}
+    />
+    <Composition
+      id="movezeroes"
+      component={MainVideoMoveZeroes}
+      durationInFrames={900}
       fps={30}
       width={1080}
       height={1920}
