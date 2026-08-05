@@ -9,7 +9,7 @@ const browser = await openBrowser("chrome", {
   chromeMode: "chrome-for-testing",
 });
 const composition = await selectComposition({ serveUrl: bundled, id: "movezeroes", puppeteerInstance: browser });
-for (const f of [40, 200, 420, 660, 800, 860]) {
+for (const f of [420, 860]) {
   await renderStill({ composition, serveUrl: bundled, output: `/tmp/mz_${f}.png`, frame: f, puppeteerInstance: browser });
   console.log("frame", f);
 }
