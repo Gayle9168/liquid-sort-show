@@ -4,10 +4,10 @@ import { GlassPanel } from "./GlassPanel";
 import { theme } from "../lib/theme";
 
 const W = 960;
-const H = 700;
+const H = 820;
 const PAD_L = 96;
-const PAD_B = 92;
-const PAD_T = 150;
+const PAD_B = 190;
+const PAD_T = 220;
 const PAD_R = 60;
 
 /** Animated O(n) vs O(n^2) graph + metric cards. Takes the stage in the last 5s. */
@@ -111,10 +111,10 @@ export const ComplexityGraphMz: React.FC<{
           <circle cx={px(draw)} cy={py(quad(draw))} r={13} fill="#FF8C69" opacity={draw > 0.02 ? 1 : 0} />
           <circle cx={px(draw)} cy={py(linear(draw))} r={13} fill="#4CC0A0" opacity={draw > 0.02 ? 1 : 0} />
 
-          <text x={PAD_L - 22} y={py(1) - 12} fill={theme.inkSoft} fontSize={22} fontFamily="'JetBrains Mono', monospace">
+          <text x={PAD_L - 34} y={PAD_T - 20} fill={theme.inkSoft} fontSize={22} fontFamily="'JetBrains Mono', monospace">
             work
           </text>
-          <text x={W - PAD_R - 90} y={py(0) + 42} fill={theme.inkSoft} fontSize={22} fontFamily="'JetBrains Mono', monospace">
+          <text x={W - PAD_R - 100} y={py(0) + 44} fill={theme.inkSoft} fontSize={22} fontFamily="'JetBrains Mono', monospace">
             input n
           </text>
         </svg>
@@ -123,7 +123,7 @@ export const ComplexityGraphMz: React.FC<{
           style={{
             position: "absolute",
             left: PAD_L + 20,
-            top: PAD_T + 20,
+            top: PAD_T + 14,
             display: "flex",
             flexDirection: "column",
             gap: 12,
@@ -137,7 +137,7 @@ export const ComplexityGraphMz: React.FC<{
         <div
           style={{
             position: "absolute",
-            bottom: 30,
+            bottom: 44,
             left: 48,
             right: 48,
             display: "flex",
