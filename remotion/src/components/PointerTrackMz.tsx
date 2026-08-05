@@ -13,12 +13,6 @@ const Pointer: React.FC<{
 }> = ({ label, value, targetLeft, top, color, colorSoft, frameKey }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const [state, setState] = React.useState({ from: targetLeft, to: targetLeft, at: 0 });
-
-  if (state.to !== targetLeft) {
-    // recompute synchronously for deterministic render
-  }
-  // deterministic slide: spring on frameKey-driven step change
   const slide = spring({ frame: frame - frameKey, fps, config: { damping: 18, stiffness: 150 } });
   const bob = Math.sin(frame / 14) * 3;
 
